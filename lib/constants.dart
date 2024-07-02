@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'model/house.dart';
+import 'model/PropertyModel.dart';
 
-Color mPrimaryColor = const Color(0xFF00B98E);
+Color mPrimaryColor = const Color(0xFB59CAB6);
 
-Color mTitleTextColor = const Color(0xFF00B98E);
+Color mTitleTextColor = const Color(0xFB59CAB6);
 
 Color mBodyTextColor = const Color(0xFF100E34).withOpacity(0.5);
 
 Color mBackgroundColor = const Color(0xFFF5F6F6);
 
-Color mSecondaryColor = const Color(0xFF00B98E);
+Color mSecondaryColor = const Color(0xFB59CAB6);
 
-final categoryList = ['Top Recommended', 'Near you', 'Agency Recommended'];
+final categoryList = ['Top Recommended', 'Agency Recommended'];
 
-final recommendedList = [
-  House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house01.jpeg'),
-  House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house02.jpeg'),
-  House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house01.jpeg'),
-  House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house02.jpeg'),
-];
+// final recommendedList = [
+//   House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house01.jpeg'),
+//   House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house02.jpeg'),
+//   House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house01.jpeg'),
+//   House('The Moon House', 'P455, Chhatak, Sylhet', 'assets/images/house02.jpeg'),
+// ];
 
 final BoxShadow boxShadow = BoxShadow(
   color: Colors.grey.withOpacity(0.3),

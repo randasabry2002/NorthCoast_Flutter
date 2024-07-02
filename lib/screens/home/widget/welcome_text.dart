@@ -10,7 +10,7 @@ class WelcomeText extends StatelessWidget {
         'Find A Perfect Property To Enjoy With Your Family',
         style: TextStyle(
           fontFamily: "Playwrite",
-          color: Color(0xFF00B98E),
+          color: Color(0xFB59CAB6),
           fontSize: 25,
           fontWeight: FontWeight.bold,
         ),

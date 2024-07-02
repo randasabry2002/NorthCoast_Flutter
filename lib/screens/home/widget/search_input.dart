@@ -9,7 +9,7 @@ class SearchInput extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
       child: TextField(
-        cursorColor: Color(0xFF00B98E),
+        cursorColor: Color(0xFB59CAB6),
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -18,10 +18,10 @@ class SearchInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           hintText: 'Search here......',
-          hintStyle: TextStyle(color: Color(0xFF00B98E), ),
+          hintStyle: TextStyle(color: Color(0xFB59CAB6), ),
           prefixIcon: IconButton(
             padding: const EdgeInsets.all(14),
-            icon: Icon(Icons.search,color: Color(0xFF00B98E),),
+            icon: Icon(Icons.search,color: Color(0xFB59CAB6),),
             onPressed: () {  },
           ),
           contentPadding: const EdgeInsets.all(2)

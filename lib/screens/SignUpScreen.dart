@@ -1,15 +1,10 @@
-import 'dart:io';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'home/home_screen.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:image_picker/image_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:get/get.dart';
-// import 'Navigation.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUpScreen extends StatefulWidget {
 
@@ -26,18 +21,17 @@ class SignUpScreenState extends State<SignUpScreen>{
   String userName = '';
   bool isPasswordVisible = true;
   
-  // final _auth = FirebaseAuth.instance;
-  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  // var _firestor = FirebaseFirestore.instance;
-  //
-  // addUser(){
-  //   _firestor.collection("Users").add({
-  //     "UserName": userName,
-  //     "Email": _auth.currentUser!.email,
-  //     "Password": password,
-  //     "ProfileImagePath": _image!.path,
-  //   });
-  // }
+  final _auth = FirebaseAuth.instance;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  var _firestor = FirebaseFirestore.instance;
+
+  addUser(){
+    _firestor.collection("Users").add({
+      "UserName": userName,
+      "Email": _auth.currentUser!.email,
+      "Password": password,
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +48,6 @@ class SignUpScreenState extends State<SignUpScreen>{
                 fit: BoxFit.fill,
               ),
               const SizedBox(height: 50),
-
               TextField(
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -81,9 +74,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                 style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                 cursorColor: Colors.white,
               ),
-
               const SizedBox(height: 20),
-
               TextField(
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -110,9 +101,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                 style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                 cursorColor: Colors.white,
               ),
-
               const SizedBox(height: 20),
-
               TextField(
                 obscureText: isPasswordVisible,
                 textAlign: TextAlign.center,
@@ -150,9 +139,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                 style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                 cursorColor: Colors.white,
               ),
-
               const SizedBox(height: 20),
-
               TextField(
                 obscureText: isPasswordVisible,
                 textAlign: TextAlign.center,
@@ -190,7 +177,6 @@ class SignUpScreenState extends State<SignUpScreen>{
                 style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                 cursorColor: Colors.white,
               ),
-
               const SizedBox(height: 40),
 
               SizedBox(
@@ -198,8 +184,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () async {
-                    if (userName.isEmpty) {/// //////////////////////////////////////////////////
-                      print("Enter User Name");
+                    if (userName.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text("Enter User Name"),
                       ));
@@ -216,31 +201,31 @@ class SignUpScreenState extends State<SignUpScreen>{
                         content: Text("Check Your Password"),
                       ));
                     } else {
-                      // try {
-                        // await _auth.createUserWithEmailAndPassword(email: email,
-                        //     password: password);
-                        //
-                        // if (_auth.currentUser != null) {
-                        //   final SharedPreferences _prefs =
-                        //   await SharedPreferences.getInstance();
-                        //   await _prefs.setString(
-                        //       "email", _auth.currentUser!.email.toString());
-                        //   await _prefs.setString("userName", userName);
-                        //
-                        //   addUser();
+                      try {
+                        await _auth.createUserWithEmailAndPassword(email: email,
+                            password: password);
+
+                        if (_auth.currentUser != null) {
+                          final SharedPreferences _prefs =
+                          await SharedPreferences.getInstance();
+                          await _prefs.setString(
+                              "email", _auth.currentUser!.email.toString());
+                          await _prefs.setString("userName", userName);
+
+                          addUser();
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => HomeScreen(),
                             ),
                           );
-                      //   }
-                      // } catch (e) {
-                      //   print("Check Your Data, This Email may be used before $e");
-                      //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      //     content: Text("Check Your Data, This Email may be used before or you haven't picked profile image"),
-                      //   ));
-                      // }
+                        }
+                      } catch (e) {
+                        print("Check Your Data, This Email may be used before $e");
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Check Your Data, This Email may be used before or you haven't picked profile image"),
+                        ));
+                      }
 
                     }
                   },

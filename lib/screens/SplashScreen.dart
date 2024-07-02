@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:north_coast_flutter/screens/SignInScreen.dart';
-import 'package:north_coast_flutter/screens/SignUpScreen.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'home/home_screen.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -34,30 +34,32 @@ class _SplashScreenState extends State<SplashScreen>
       );
     });
 
-    // SharedPreferences.getInstance().then((value) {
-    //   String email = value.getString("email").toString();
-    //   print("email: $email");
-    //
-    //   // Simulate a delay for demonstration purposes
-    //   Future.delayed(Duration(seconds: 2), () {
-    //     if (email != 'null') {
-    //       // User is logged in, navigate to home or any other screen
-    //       // Replace `HomeScreen` with the actual screen you want to navigate to
-    //       Navigator.pushReplacement(
-    //         context,
-    //         MaterialPageRoute(builder: (context) => Navigation()),
-    //       );
-    //     } else {
-    //       // User is not logged in, navigate to Signin screen
-    //       Navigator.pushReplacement(
-    //         context,
-    //         MaterialPageRoute(builder: (context) => Signin()),
-    //       );
-    //     }
-    //   });
-    // });
+    SharedPreferences.getInstance().then((value) {
+      String email = value.getString("email").toString();
+      print("email: $email");
 
-    // Define animation
+      // Simulate a delay for demonstration purposes
+      Future.delayed(Duration(seconds: 2), () {
+        if (email != 'null') {
+          // User is logged in, navigate to home or any other screen
+          // Replace `HomeScreen` with the actual screen you want to navigate to
+          Get.off(() => HomeScreen());
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => HomeScreen()),
+          // );
+        } else {
+          // User is not logged in, navigate to Signin screen
+          Get.off(() => SignInScreen());
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => SignInScreen()),
+          // );
+        }
+      });
+    });
+
+    // Define animation;
     _animation = Tween<double>(begin: 0.5, end: 1.0).animate(
       CurvedAnimation(
         parent: _animationController,

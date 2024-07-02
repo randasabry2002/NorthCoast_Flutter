@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "433119891405",
+    "project_id": "northcoast-clone",
+    "storage_bucket": "northcoast-clone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433119891405:android:86b4c4a82ef0853cf6be84",
+        "android_client_info": {
+          "package_name": "com.example.north_coast_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433119891405-t5gj0bg7302deqnvvi5is4lkb3n85h1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.north_coast_flutter",
+            "certificate_hash": "33b9e130d9fe741077a94b075a82d9648b6876cc"
+          }
+        },
+        {
+          "client_id": "433119891405-6a13su8ts8rhf5o6le97v967ejetn22v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEnL1QhI71yhmNUjD1VITRXBnxNqhAudE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433119891405-6a13su8ts8rhf5o6le97v967ejetn22v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
